@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive, render } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const data = reactive({
     name: ''

@@ -1,11 +1,13 @@
 <script setup>
 import {RouterLink} from 'vue-router'
+
 </script>
 
 <template>
     <header>
         <div>
             <button id="hamburguer">
+                |||
             </button>
 
             <h1 class="logo">EvoDrawing</h1>
@@ -22,8 +24,8 @@ import {RouterLink} from 'vue-router'
             <div class="searchBar"></div>
 
             <div>
-                <RouterLink to="#">Sign in</RouterLink>
-                <RouterLink to="#">Sign up</RouterLink>
+                <RouterLink to="#">Sign In</RouterLink>
+                <RouterLink to="#">Sign Up</RouterLink>
             </div>
         </div>
     </header>

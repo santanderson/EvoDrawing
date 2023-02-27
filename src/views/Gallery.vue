@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 
 const imgs = [{
     name: "Broly Picture",

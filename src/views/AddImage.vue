@@ -11,7 +11,7 @@ const data = reactive({
     <main>
         <div>
             <h1>Post Image</h1>
-            <RouterLink to="#">Back to Home</RouterLink>
+            <RouterLink to="/">Back to Home</RouterLink>
         </div>
 
         <form>

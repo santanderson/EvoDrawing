@@ -15,7 +15,7 @@ const imgs = [{
     <main>
         <div>
             <h1>Gallery</h1>
-            <RouterLink to="#">Post Image</RouterLink>
+            <RouterLink to="/addImage">Post Image</RouterLink>
         </div>
 
         <div class="gallery">

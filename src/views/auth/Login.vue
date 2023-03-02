@@ -13,6 +13,8 @@ const data = reactive({
     password: ''
 })
 
+if(props.userStatus.isLoged) router.push('/')
+
 async function onSub(e) {
     e.preventDefault();
 
@@ -48,8 +50,7 @@ async function login() {
         }).then(res => {
             if (res.status !== 200) {
                 const obj = res.json().then( res => {
-
-                console.log(res)
+                    window.alert(res.msg)
             })
             } else {
                 const re = res.json().then(res => {
@@ -59,7 +60,7 @@ async function login() {
                         router.push('/')
 
                     } else {
-                        console.log('Algum erro ocorreu!')
+                        window.alert('Algum erro ocorreu!')
                     }
                 })
             }
@@ -69,6 +70,7 @@ async function login() {
 </script>
 
 <template>
+
     <main>
         <h1>Sign In</h1>
 

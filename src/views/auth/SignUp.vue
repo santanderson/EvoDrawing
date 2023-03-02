@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive, render } from 'vue';
+import FlashMessage from '../../components/FlashMessage.vue';
 import router from '@/router'
 
 const props = defineProps({
@@ -33,7 +34,6 @@ async function onSub(e) {
             })
             } else{
                 const obj = res.json().then(res => {
-                    console.log(res)
                     router.push('login')
                 }
             )}
@@ -43,7 +43,10 @@ async function onSub(e) {
 </script>
 
 <template>
-    <main>
+
+    <FlashMessage v-if="props.userStatus.isLoged" msg="Do Log Out Before!" url="/"/>
+
+    <main v-else>
         <h1>Sign Up</h1>
 
         <form>

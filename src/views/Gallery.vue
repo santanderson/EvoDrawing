@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import FlashMessage from '../components/FlashMessage.vue';
 import router from '@/router'
 
 const props = defineProps({
@@ -38,7 +39,6 @@ async function deleteImg(e) {
         } else {
             const obj = res.json().then( res => {
                 
-                console.log(res.msg)
                 router.push('/readGallery')
             }
             )
@@ -49,13 +49,18 @@ async function deleteImg(e) {
 </script>
 
 <template>
-    <main>
+
+    <FlashMessage v-if="!props.userStatus.isLoged" msg="Sign In Before!" url="login"/>
+
+    <main v-else>
         <div>
             <h1>Your Gallery</h1>
             <RouterLink to="/addImage">Post Image</RouterLink>
         </div>
 
         <div class="gallery">
+
+            <FlashMessage v-if="!props.imgGallery[0]" msg="Your gallery is empty, post some images!" url="addImage"/>
             
             <div v-for="img in props.imgGallery">
                 <RouterLink target="_blank" :to="img.src.split('/evoDrawingRemake/app')[1]">

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive, render } from 'vue';
 import { RouterLink } from 'vue-router';
+import FlashMessage from '../components/FlashMessage.vue';
 import router from '@/router'
 
 const props = defineProps({
@@ -40,7 +41,6 @@ async function addImage(e) {
             })
         } else {
             const obj = res.json().then( res => {
-                console.log(res)
                 router.push('/');
             }
             )
@@ -57,7 +57,9 @@ async function addImage(e) {
             <RouterLink to="/">Back to Home</RouterLink>
         </div>
 
-        <form>
+        <FlashMessage v-if="!props.userStatus.isLoged" msg="Sign In Before" url="login"/>
+
+        <form v-else>
             <label for="name">Title</label>
             <input type="name" id="name" placeholder="title" v-model="dynamicData.name"/>
 

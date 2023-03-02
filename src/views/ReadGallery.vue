@@ -1,5 +1,6 @@
 <script setup>
 import router from '@/router'
+import FlashMessage from '../components/FlashMessage.vue';
 
 const props = defineProps({
     userStatus: Object,
@@ -11,6 +12,8 @@ const data = {
 }
 
 async function getter () {
+    if(!props.userStatus.isLoged) return
+
     data.userId = props.userStatus.userId
 
     fetch(`http://localhost:3000/images/gallery`, 
@@ -45,4 +48,7 @@ getter();
 </script>
 
 <template>
+
+    <FlashMessage v-if="!props.userStatus.isLoged" msg="Sign In Before" url="login"/>
+
 </template>

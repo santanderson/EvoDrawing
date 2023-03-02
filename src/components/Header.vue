@@ -1,12 +1,31 @@
 <script setup>
 import {RouterLink} from 'vue-router'
 import { ref } from 'vue';
+import router from '@/router'
+
+const props = defineProps({
+    userStatus: Object,
+    changeStatus: Function,
+    defineProperties: Function,
+    logOut: Function,
+    imgGallery: Object
+})
 
 const men = ref(null)
+
+
+
+if(!props.imgGallery[0]) router.push('/')
+
 
 function openMenu() {
     if(men.value.style.visibility === 'visible') return men.value.style.visibility = 'hidden'
     men.value.style.visibility = 'visible'
+}
+
+function logOut() {
+    props.logOut
+    location.reload()
 }
 
 </script>
@@ -23,7 +42,7 @@ function openMenu() {
             <nav ref="men" id="menu">
                 <ul>
                     <RouterLink to="/">Home</RouterLink>
-                    <RouterLink to="/gallery">Gallery</RouterLink>
+                    <RouterLink to="/readGallery">Gallery</RouterLink>
                 </ul>
             </nav>
         </div>
@@ -31,10 +50,11 @@ function openMenu() {
         <div>
             <div class="searchBar"></div>
 
-            <div>
+            <div v-if="!props.userStatus.isLoged">
                 <RouterLink to="/login">Sign In</RouterLink>
                 <RouterLink to="/register">Sign Up</RouterLink>
             </div>
+            <button v-else @click="logOut">Log Out</button>
         </div>
     </header>
 </template>
@@ -75,6 +95,13 @@ function openMenu() {
     header div a{
         color: white;
         text-decoration: none;
+    }
+    header div button {
+        background-color: transparent;
+        border: none;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
     }
 
 </style>

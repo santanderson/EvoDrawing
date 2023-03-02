@@ -10,7 +10,7 @@ async function getter () {
     .then( res => {
         if (res.status !== 200 || !res.status) {
             const obj = res.json().then( res => {
-                console.log(res)
+                window.alert(res.msg)
             })
         } else {
             const obj = res.json().then( res => {

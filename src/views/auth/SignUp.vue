@@ -47,20 +47,30 @@ async function onSub(e) {
     <FlashMessage v-if="props.userStatus.isLoged" msg="Do Log Out Before!" url="/"/>
 
     <main v-else>
-        <h1>Sign Up</h1>
+        <div class="titleContainer">
+            <h1 class="title">Sign Up</h1>
+        </div>
 
         <form>
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="name" v-model="data.name"/>
+            <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="name" v-model="data.name"/>
+            </div>
 
-            <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder="e-mail" v-model="data.email"/>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="e-mail" v-model="data.email"/>
+            </div>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="password" v-model="data.password"/>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="password" v-model="data.password"/>
+            </div>
 
-            <label for="confirmPassword">Confirm Password</label>
-            <input type="password" id="confirmPassword" placeholder="confirm password" v-model="data.confirmpassword"/>
+            <div>
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="confirm password" v-model="data.confirmpassword"/>
+            </div>
 
             <button @click="onSub">Sign Up</button>
         </form>

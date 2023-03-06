@@ -53,16 +53,16 @@ async function deleteImg(e) {
     <FlashMessage v-if="!props.userStatus.isLoged" msg="Sign In Before!" url="login"/>
 
     <main v-else>
-        <div>
-            <h1>Your Gallery</h1>
-            <RouterLink to="/addImage">Post Image</RouterLink>
+        <div class="titleContainer">
+            <h1 class="title">Your Gallery</h1>
+            <RouterLink class="lnk" to="/addImage">Post Image</RouterLink>
         </div>
 
         <div class="gallery">
 
             <FlashMessage v-if="!props.imgGallery[0]" msg="Your gallery is empty, post some images!" url="addImage"/>
             
-            <div v-for="img in props.imgGallery">
+            <div class="imgCard" v-for="img in props.imgGallery">
                 <RouterLink target="_blank" :to="img.src.split('/evoDrawingRemake/app')[1]">
                     <h2>{{ img.name }}</h2>
 

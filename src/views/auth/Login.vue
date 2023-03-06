@@ -72,14 +72,20 @@ async function login() {
 <template>
 
     <main>
-        <h1>Sign In</h1>
+        <div class="titleContainer">
+            <h1 class="title">Sign In</h1>
+        </div>
 
         <form>
-            <label for="email">E-mail</label>
-            <input type="email" id="email" placeholder="e-mail" v-model="data.email"/>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="e-mail" v-model="data.email"/>
+            </div>
 
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="password" v-model="data.password"/>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="password" v-model="data.password"/>
+            </div>
 
             <button @click="onSub">Sign In</button>
         </form>

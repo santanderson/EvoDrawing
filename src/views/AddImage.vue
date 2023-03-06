@@ -52,19 +52,23 @@ async function addImage(e) {
 
 <template>
     <main>
-        <div>
-            <h1>Post Image</h1>
-            <RouterLink to="/">Back to Home</RouterLink>
+        <div class="titleContainer">
+            <h1 class="title">Post Image</h1>
+            <RouterLink class="lnk" to="/">Back to Home</RouterLink>
         </div>
 
         <FlashMessage v-if="!props.userStatus.isLoged" msg="Sign In Before" url="login"/>
 
         <form v-else>
-            <label for="name">Title</label>
-            <input type="name" id="name" placeholder="title" v-model="dynamicData.name"/>
+            <div>
+                <label for="name">Title</label>
+                <input type="name" id="name" placeholder="title" v-model="dynamicData.name"/>
+            </div>
 
-            <label for="file">Select the File</label>
-            <input type="file" id="file" @change="addData"/>
+            <div>
+                <label for="file">Select the File</label>
+                <input type="file" id="file" @change="addData"/>
+            </div>
 
             <button @click="addImage">Post</button>
         </form>

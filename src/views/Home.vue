@@ -9,14 +9,14 @@ const props = defineProps({
 
 <template>
     <main>
-        <div>
-            <h1>Home</h1>
-            <RouterLink to="/addImage">Post Image</RouterLink>
+        <div class="titleContainer">
+            <h1 class="title">Home</h1>
+            <RouterLink class="lnk" to="/addImage">Post Image</RouterLink>
         </div>
 
         <div class="gallery">
             
-            <div v-for="img in props.images">
+            <div class="imgCard" v-for="img in props.images">
                 <RouterLink target="_blank" :to="img.src.split('/evoDrawingRemake/app')[1]">
                     <h2>{{ img.name }}</h2>
 

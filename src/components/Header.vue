@@ -18,8 +18,14 @@ const men = ref(null)
 if(!props.imgGallery[0]) router.push('/')
 
 
-function openMenu() {
-    if(men.value.style.visibility === 'visible') return men.value.style.visibility = 'hidden'
+function openMenu(e) {
+    if(men.value.style.visibility === 'visible') { 
+
+        e.target.classList.remove('active')
+        return men.value.style.visibility = 'hidden'
+    }
+
+    e.target.classList.add('active')
     men.value.style.visibility = 'visible'
 }
 
@@ -32,10 +38,8 @@ function logOut() {
 
 <template>
     <header>
-        <div>
-            <button @click="openMenu" id="hamburguer">
-                |||
-            </button>
+        <div class="container">
+            <button @click="openMenu" id="hamburguer"></button>
 
             <h1 class="logo">EvoDrawing</h1>
 
@@ -43,13 +47,12 @@ function logOut() {
                 <ul>
                     <RouterLink to="/">Home</RouterLink>
                     <RouterLink to="/readGallery">Gallery</RouterLink>
+                    <RouterLink to="/addImage">Post Image</RouterLink>
                 </ul>
             </nav>
         </div>
 
-        <div>
-            <div class="searchBar"></div>
-
+        <div class="container">
             <div v-if="!props.userStatus.isLoged">
                 <RouterLink to="/login">Sign In</RouterLink>
                 <RouterLink to="/register">Sign Up</RouterLink>
@@ -62,46 +65,86 @@ function logOut() {
 <style>
     header{
         display: flex;
+        position: fixed;
+        top: 0;
         flex-flow: row nowrap;
         justify-content: space-between;
         color: white;
         font-weight: 600;
-        background-color: rgba(0, 0, 0, 0.63);
+        padding: 10px 40px;
+        width: 100%;
+        height: 60px;
+        background-color: rgb(0, 150, 87);
     }
-    header div {
+    .container {
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
         gap: 30px;
         padding: 0 20px;
     }
-    header div #hamburguer{
-        z-index: 99;
-        padding: 5px;
+    .container .logo{
+        font-size: 24px;
     }
-    header div #menu {
-        position: absolute;
+    .container div{
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 60px;
+    }
+
+    .container #menu {
+        position: fixed;
         top: 0;
         left: 0;
-        padding: 40px 20px;
+        padding: 100px 20px;
+        width: 300px;
+        height: 100%;
         visibility: hidden;
-        background-color: rgba(0, 0, 0, 0.63);
+        background-color: rgb(44, 57, 70);
     }
-    header div #menu ul {
+    .container #menu ul {
         display: flex;
         flex-flow: column nowrap;
         gap: 30px;
     }
-    header div a{
+    .container a{
         color: white;
         text-decoration: none;
     }
-    header div button {
+    .container button {
         background-color: transparent;
         border: none;
         color: white;
         font-weight: 600;
+        font-size: 16px;
         cursor: pointer;
+    }
+
+    /*Hamburguer button*/
+
+    #hamburguer{
+        z-index: 99;
+        border-top: 3px solid white;
+        width: 28px;
+    }
+    #hamburguer::after, #hamburguer::before{
+        content: '';
+        display: block;
+        width: 28px;
+        height: 3px;
+        background-color: white;
+        margin-top: 7px;
+        transition: 0.4s;
+    }
+    #hamburguer.active {
+        border-top-color: transparent;
+    }
+    #hamburguer.active::before {
+        transform: rotate(135deg)
+    }
+    #hamburguer.active::after {
+        transform: rotate(-135deg);
+        margin-top: -4px;
     }
 
 </style>

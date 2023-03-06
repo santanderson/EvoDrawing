@@ -47,6 +47,7 @@ function logOut() {
                 <ul>
                     <RouterLink to="/">Home</RouterLink>
                     <RouterLink to="/readGallery">Gallery</RouterLink>
+                    <RouterLink to="/addImage">Post Image</RouterLink>
                 </ul>
             </nav>
         </div>
@@ -64,11 +65,14 @@ function logOut() {
 <style>
     header{
         display: flex;
+        position: fixed;
+        top: 0;
         flex-flow: row nowrap;
         justify-content: space-between;
         color: white;
         font-weight: 600;
         padding: 10px 40px;
+        width: 100%;
         height: 60px;
         background-color: rgb(0, 150, 87);
     }
@@ -89,14 +93,14 @@ function logOut() {
     }
 
     .container #menu {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         padding: 100px 20px;
         width: 300px;
         height: 100%;
         visibility: hidden;
-        background-color: rgb(21,32,43);
+        background-color: rgb(44, 57, 70);
     }
     .container #menu ul {
         display: flex;
